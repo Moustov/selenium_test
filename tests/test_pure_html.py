@@ -1,6 +1,6 @@
 from unittest import TestCase
 from selenium import webdriver
-from caipture_com_demo_samples import CaiptureComDemoSamples
+from pom.caipture_com_demo_samples import CaiptureComDemoSamples
 
 
 class TestCaiptureComDemoSamples(TestCase):

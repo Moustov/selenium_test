@@ -30,4 +30,18 @@ https://codesandbox.io/s/angularjs-17x-sandbox-5kdd3
 
 See [here](pom/codesandbox.py)
 
+# Tips
+
+* https://www.reddit.com/r/QualityAssurance/comments/q5rsl8/in_your_experience_is_using_xpaths_a_bad_practice/:
+
+>CSS selectors perform far better than Xpath and it is well documented in Selenium community. Here are some reasons,
+>
+>Xpath engines are different in each browser, hence make them inconsistent
+>
+>IE does not have a native xpath engine, therefore selenium injects its own xpath engine for compatibility of its API. Hence we lose the advantage of using native browser features that WebDriver inherently promotes.
+>
+>Xpath tend to become complex and hence make hard to read in my opinion
+>
+>Further more there was a benchmark that indicated css selectors to be faster - not by much but I guess it could add up to a minute or 2 for large scale projects.
+
 

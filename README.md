@@ -1,10 +1,11 @@
 EXAMPLES OF SELENIUM USAGES
 =====
-The purpose of this repos is to demonstrate some Selenium features.
+![Selenium Logo](https://selenium-python.readthedocs.io/_static/logo.png)
 
-It is based on the Page Object Model. To run the demo, see [Test Running](#Test Running) section.
-
-# Starting
+* The purpose of this repos is to demonstrate some [Selenium](https://selenium-python.readthedocs.io/) features with python.
+* It is based on the [Page Object Model](https://www.selenium.dev/documentation/test_practices/encouraged/page_object_models/). To run the demo, see [Test Running](#Test Running) section.
+* Those interfaces could be improved using the [ScreenPlay](https://screenpy-docs.readthedocs.io/en/latest/index.html) design pattern 
+# Quick start...
 ## Requirements
 Install requirements:
 

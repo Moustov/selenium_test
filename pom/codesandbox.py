@@ -26,4 +26,4 @@ class CodeSandbox:
         return self.elements_search["button_search_option"].is_displayed()
 
     def wait_for_button_search_option(self):
-        WebDriverWait(self.driver, 15).until(EC.presence_of_element_located((By.XPATH, '/html/body/div[1]/div/div/div/div/div[1]/div/div[1]/div/div[1]/section/div[2]/div/div[1]/button')))
+        WebDriverWait(self.driver, 30).until(EC.presence_of_element_located((By.XPATH, '/html/body/div[1]/div/div/div/div/div[1]/div/div[1]/div/div[1]/section/div[2]/div/div[1]/button')))

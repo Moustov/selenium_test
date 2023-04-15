@@ -1,5 +1,9 @@
 EXAMPLES OF SELENIUM USAGES
 =====
+The purpose of this repos is to demonstrate some Selenium features.
+
+It is based on the Page Object Model. To run the demo, see [Test Running](#Test Running) section.
+
 # Starting
 ## Requirements
 Install requirements:

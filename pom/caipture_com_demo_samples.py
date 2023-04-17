@@ -1,9 +1,14 @@
+from selenium.webdriver.support.wait import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
 from selenium import webdriver
+from selenium.webdriver import Keys
 from selenium.webdriver.common.by import By
 
 
 class CaiptureComDemoSamples:
     def __init__(self, driver: webdriver):
+        self.css_selector_for_color_picker = "body > table:nth-child(1) > tbody:nth-child(1) > tr:nth-child(2) > td:nth-child(2) > form:nth-child(2) > input:nth-child(1)"
+        self.alert = None
         self.driver = driver
         self.calc_button_xpaths = {"CE": "/html/body/table/tbody/tr[1]/td[1]/form/table/tbody/tr[2]/td[1]/input",
                                    "<-": "/html/body/table/tbody/tr[1]/td[1]/form/table/tbody/tr[2]/td[2]/input",
@@ -49,6 +54,13 @@ class CaiptureComDemoSamples:
         self.elements["Mouse Down Area"] = self.driver.find_element(By.XPATH,self.mouse_events_xpaths["Mouse Down Area"])
         self.elements["Mouse Down Area"].click()
 
+    def click_on_color_button(self):
+        self.elements["Color selector"] = self.driver.find_element(By.CSS_SELECTOR, self.css_selector_for_color_picker)
+        self.elements["Color selector"].click()
+
+    def define_color(self, red: str, green: str, blue: str):
+        self.driver.execute_script(f"document.querySelector('{self.css_selector_for_color_picker}').value='#{red}{green}{blue}'")
+
     def get_mouse_down_linked_text_status(self):
         self.elements["Mouse Down Linked Text"] = self.driver.find_element(By.ID,"mousedownbutton")
         return self.elements["Mouse Down Linked Text"].get_attribute('innerHTML')
@@ -60,4 +72,9 @@ class CaiptureComDemoSamples:
     def click_file_upload(self):
         self.elements["submit file"] = self.driver.find_element(By.XPATH, '/html/body/table/tbody/tr[3]/td[3]/form/input[2]')
         self.elements["submit file"].click()
+
+    def click_on_submit_color(self):
+        self.elements["submit color"] = self.driver.find_element(By.CSS_SELECTOR,
+                                                                'body > table:nth-child(1) > tbody:nth-child(1) > tr:nth-child(2) > td:nth-child(2) > form:nth-child(2) > input:nth-child(3)')
+        self.elements["submit color"].click()
 

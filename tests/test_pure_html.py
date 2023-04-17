@@ -36,5 +36,12 @@ class TestCaiptureComDemoSamples(TestCase):
         self.page.click_file_upload()
         assert "agilitest-app.xml" in self.driver.current_url
 
+    def test_color_selection(self):
+        self.page.click_on_color_button()
+        self.page.define_color("FF", "BB", "99")
+        self.page.click_on_submit_color()
+        print(self.driver.current_url)
+        assert "23ffbb99" in self.driver.current_url
+
     def tearDown(self):
         self.driver.close()

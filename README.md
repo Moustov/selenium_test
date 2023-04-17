@@ -35,8 +35,11 @@ https://codesandbox.io/s/angularjs-17x-sandbox-5kdd3
 
 See [here](pom/codesandbox.py)
 
-# Tips
+# Extra sandbox websites:
+* https://ultimateqa.com/dummy-automation-websites/
+* https://codesandbox.io/
 
+# Tips
 * https://www.reddit.com/r/QualityAssurance/comments/q5rsl8/in_your_experience_is_using_xpaths_a_bad_practice/:
 
 >CSS selectors perform far better than Xpath and it is well documented in Selenium community. Here are some reasons,
@@ -49,4 +52,22 @@ See [here](pom/codesandbox.py)
 >
 >Further more there was a benchmark that indicated css selectors to be faster - not by much but I guess it could add up to a minute or 2 for large scale projects.
 
+* pushing cookies: https://stackoverflow.com/questions/7022116/how-to-submit-http-authentication-with-selenium-python-binding-webdriver
 
+
+    import requests
+    from selenium import webdriver
+    from requests.auth import HTTPBasicAuth
+
+    session = requests.Session()
+    www_request = session.get('http://example.com', auth=HTTPBasicAuth('username','password'), allow_redirects=False)
+
+    driver = webdriver.Remote(...)
+    #chrome needed to open the page before add the cookies
+    driver.get('http://example.com')
+
+    cookies = session.cookies.get_dict()
+    for key in cookies:
+        driver.add_cookie({'name': key, 'value': cookies[key]})
+
+    driver.get('http://example.com')

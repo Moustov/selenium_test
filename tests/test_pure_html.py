@@ -59,11 +59,11 @@ class TestCaiptureComDemoSamples(TestCase):
         assert init_value != new_value
 
     def test_input_radion(self):
-        init_value = self.page.get_current_input_radio()
-        assert init_value == "Male"
+        init_value = self.page.get_input_radio_genre()
+        assert init_value == "MALE"
         self.page.set_female_input_radio()
-        new_value = self.page.get_current_input_radio()
-        assert new_value == "Female"
+        new_value = self.page.get_input_radio_genre()
+        assert new_value == "FEMALE"
 
     def tearDown(self):
         self.driver.close()

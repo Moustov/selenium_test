@@ -49,6 +49,9 @@ class CaiptureComDemoSamples:
                                              'tr:nth-child(5) > td:nth-child(1) > span:nth-child(1)'
         self.css_selector_mouse_enter_area_status = '#onmouseenter'
         self.css_selector_mouse_move_area_count = '#onmousemove'
+        self.css_selector_input_radio_male = "body > table:nth-child(1) > tbody:nth-child(1) > tr:nth-child(2) > td:nth-child(1) > form:nth-child(2) > input:nth-child(1)"
+        self.css_selector_input_radio_female = "body > table:nth-child(1) > tbody:nth-child(1) > tr:nth-child(2) > td:nth-child(1) > form:nth-child(2) > input:nth-child(3)"
+        self.css_selector_input_radio_genre_other = "body > table:nth-child(1) > tbody:nth-child(1) > tr:nth-child(2) > td:nth-child(1) > form:nth-child(2) > input:nth-child(5)"
         self.elements = {}
 
     def open_page(self):
@@ -113,4 +116,24 @@ class CaiptureComDemoSamples:
     def get_mouse_move_count(self) -> str:
         element = self.driver.find_element(By.CSS_SELECTOR, self.css_selector_mouse_move_area_count)
         return element.get_attribute('value')
+
+    def get_input_radio_genre(self) -> str:
+        element = self.driver.find_element(By.CSS_SELECTOR,self.css_selector_input_radio_male)
+        is_male = element.is_selected()
+        if is_male:
+            return "MALE"
+        element = self.driver.find_element(By.CSS_SELECTOR, self.css_selector_input_radio_female)
+        is_female = element.is_selected()
+        if is_female:
+            return "FEMALE"
+        element = self.driver.find_element(By.CSS_SELECTOR, self.css_selector_input_radio_genre_other)
+        is_other = element.is_selected()
+        if is_other:
+            return "OTHER"
+        return "NO DEFAULT VALUE"
+
+    def set_female_input_radio(self):
+        element = self.driver.find_element(By.CSS_SELECTOR, self.css_selector_input_radio_female)
+        element.click()
+
 

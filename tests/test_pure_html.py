@@ -44,5 +44,12 @@ class TestCaiptureComDemoSamples(TestCase):
         print(self.driver.current_url)
         assert "23ffbb99" in self.driver.current_url
 
+    def test_mouse_enter_area(self):
+        res = self.page.get_mouse_enter_area_status()
+        assert res != "OK"
+        self.page.mouse_enter_area()
+        res = self.page.get_mouse_enter_area_status()
+        assert res == "OK"
+
     def tearDown(self):
         self.driver.close()

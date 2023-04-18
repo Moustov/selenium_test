@@ -1,11 +1,13 @@
-from selenium.webdriver.support.wait import WebDriverWait
-from selenium.webdriver.support import expected_conditions as EC
 from selenium import webdriver
-from selenium.webdriver import Keys
+from selenium.webdriver import ActionChains
 from selenium.webdriver.common.by import By
 
 
 class CaiptureComDemoSamples:
+    """
+    https://selenium-python.readthedocs.io/api.html
+    """
+
     def __init__(self, driver: webdriver):
         self.css_selector_for_color_picker = "body > table:nth-child(1) > tbody:nth-child(1) > tr:nth-child(2) > td:nth-child(2) > form:nth-child(2) > input:nth-child(1)"
         self.alert = None
@@ -77,4 +79,15 @@ class CaiptureComDemoSamples:
         self.elements["submit color"] = self.driver.find_element(By.CSS_SELECTOR,
                                                                 'body > table:nth-child(1) > tbody:nth-child(1) > tr:nth-child(2) > td:nth-child(2) > form:nth-child(2) > input:nth-child(3)')
         self.elements["submit color"].click()
+
+    def mouse_enter_area(self):
+        element = self.driver.find_element(By.CSS_SELECTOR, 'body > table:nth-child(1) > tbody:nth-child(1) > tr:nth-child(1) > td:nth-child(2) > table:nth-child(3) > tbody:nth-child(1) > tr:nth-child(5) > td:nth-child(1) > span:nth-child(1)')
+        action = ActionChains(self.driver)
+        action.move_to_element(element)
+        action.perform()
+
+    def get_mouse_enter_area_status(self) -> str:
+        element = self.driver.find_element(By.CSS_SELECTOR,
+                                           '#onmouseenter')
+        return element.get_attribute('innerHTML')
 

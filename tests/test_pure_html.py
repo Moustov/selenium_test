@@ -51,5 +51,12 @@ class TestCaiptureComDemoSamples(TestCase):
         res = self.page.get_mouse_enter_area_status()
         assert res == "OK"
 
+    def test_mouse_move_area(self):
+        init_value = self.page.get_mouse_move_count()
+        self.page.mouse_move_area(1, 1)
+        self.page.mouse_move_area(1, 1)
+        res = self.page.get_mouse_move_count()
+        assert init_value != res
+
     def tearDown(self):
         self.driver.close()

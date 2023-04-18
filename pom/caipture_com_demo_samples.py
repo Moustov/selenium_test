@@ -91,3 +91,15 @@ class CaiptureComDemoSamples:
                                            '#onmouseenter')
         return element.get_attribute('innerHTML')
 
+    def mouse_move_area(self, x: int, y: int):
+        element = self.driver.find_element(By.CSS_SELECTOR, 'body > table:nth-child(1) > tbody:nth-child(1) > tr:nth-child(1) > td:nth-child(2) > table:nth-child(3) > tbody:nth-child(1) > tr:nth-child(7) > td:nth-child(1) > span:nth-child(1)')
+        action = ActionChains(self.driver)
+        action.move_to_element(element)
+        action.perform()
+        action.move_by_offset(x, y).perform()
+
+    def get_mouse_move_count(self) -> str:
+        element = self.driver.find_element(By.CSS_SELECTOR,
+                                           '#onmousemove')
+        return element.get_attribute('value')
+

@@ -1,3 +1,4 @@
+from pathlib import Path
 from unittest import TestCase
 from selenium import webdriver
 from pom.caipture_com_demo_samples import CaiptureComDemoSamples
@@ -32,9 +33,9 @@ class TestCaiptureComDemoSamples(TestCase):
         assert self.page.get_mouse_down_linked_text_status() == "OK"
 
     def test_file_submit(self):
-        self.page.click_file_browse(r"C:\Users\chris\Agilitest-Editor\agilitest-app.xml")
+        self.page.click_file_browse(__file__)
         self.page.click_file_upload()
-        assert "agilitest-app.xml" in self.driver.current_url
+        assert Path(__file__).name in self.driver.current_url
 
     def test_color_selection(self):
         self.page.click_on_color_button()

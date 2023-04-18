@@ -87,8 +87,7 @@ class CaiptureComDemoSamples:
         action.perform()
 
     def get_mouse_enter_area_status(self) -> str:
-        element = self.driver.find_element(By.CSS_SELECTOR,
-                                           '#onmouseenter')
+        element = self.driver.find_element(By.CSS_SELECTOR, '#onmouseenter')
         return element.get_attribute('innerHTML')
 
     def mouse_move_area(self, x: int, y: int):
@@ -99,7 +98,6 @@ class CaiptureComDemoSamples:
         action.move_by_offset(x, y).perform()
 
     def get_mouse_move_count(self) -> str:
-        element = self.driver.find_element(By.CSS_SELECTOR,
-                                           '#onmousemove')
+        element = self.driver.find_element(By.CSS_SELECTOR, '#onmousemove')
         return element.get_attribute('value')
 

@@ -55,8 +55,15 @@ class TestCaiptureComDemoSamples(TestCase):
         init_value = self.page.get_mouse_move_count()
         self.page.mouse_move_area(1, 1)
         self.page.mouse_move_area(1, 1)
-        res = self.page.get_mouse_move_count()
-        assert init_value != res
+        new_value = self.page.get_mouse_move_count()
+        assert init_value != new_value
+
+    def test_input_radion(self):
+        init_value = self.page.get_current_input_radio()
+        assert init_value == "Male"
+        self.page.set_female_input_radio()
+        new_value = self.page.get_current_input_radio()
+        assert new_value == "Female"
 
     def tearDown(self):
         self.driver.close()

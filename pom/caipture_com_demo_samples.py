@@ -11,7 +11,8 @@ class CaiptureComDemoSamples:
     def __init__(self, driver: webdriver):
         self.alert = None
         self.driver = driver
-        self.css_selector_for_color_picker = "body > table:nth-child(1) > tbody:nth-child(1) > tr:nth-child(2) > td:nth-child(2) > form:nth-child(2) > input:nth-child(1)"
+        self.css_selector_for_color_picker = "body > table:nth-child(1) > tbody:nth-child(1) > tr:nth-child(2) > " \
+                                             "td:nth-child(2) > form:nth-child(2) > input:nth-child(1)"
         self.xpath_calc_buttons = {"CE": "/html/body/table/tbody/tr[1]/td[1]/form/table/tbody/tr[2]/td[1]/input",
                                    "<-": "/html/body/table/tbody/tr[1]/td[1]/form/table/tbody/tr[2]/td[2]/input",
                                    "%": "/html/body/table/tbody/tr[1]/td[1]/form/table/tbody/tr[2]/td[3]/input",
@@ -33,13 +34,19 @@ class CaiptureComDemoSamples:
                                    "/": "",
                                    "=": "/html/body/table/tbody/tr[1]/td[1]/form/table/tbody/tr[6]/td[4]/input",
                                    "field_value": '//*[@id="calc_resultat"]'}
-        self.xpath_mouse_events = {"Mouse Down Area": "/html/body/table/tbody/tr[1]/td[2]/table[2]/tbody/tr[4]/td[1]/span",
+        self.xpath_mouse_events = {"Mouse Down Area": "/html/body/table/tbody/tr[1]/td[2]/table[2]/tbody/tr[4]"
+                                                      "/td[1]/span",
                                     "Mouse Down Linked Text": '//*[@id="mousedownbutton"]'}
-        self.css_selector_mouse_move_area = 'body > table:nth-child(1) > tbody:nth-child(1) > tr:nth-child(1) > td:nth-child(2) > table:nth-child(3) > tbody:nth-child(1) > tr:nth-child(7) > td:nth-child(1) > span:nth-child(1)'
+        self.css_selector_mouse_move_area = 'body > table:nth-child(1) > tbody:nth-child(1) > tr:nth-child(1) > ' \
+                                            'td:nth-child(2) > table:nth-child(3) > tbody:nth-child(1) > ' \
+                                            'tr:nth-child(7) > td:nth-child(1) > span:nth-child(1)'
         self.xpath_submit_file = '/html/body/table/tbody/tr[3]/td[3]/form/input[2]'
         self.id_mouse_down_linked_text_status = "mousedownbutton"
-        self.css_selector_submit_color = 'body > table:nth-child(1) > tbody:nth-child(1) > tr:nth-child(2) > td:nth-child(2) > form:nth-child(2) > input:nth-child(3)'
-        self.css_selector_mouse_enter_area = 'body > table:nth-child(1) > tbody:nth-child(1) > tr:nth-child(1) > td:nth-child(2) > table:nth-child(3) > tbody:nth-child(1) > tr:nth-child(5) > td:nth-child(1) > span:nth-child(1)'
+        self.css_selector_submit_color = 'body > table:nth-child(1) > tbody:nth-child(1) > tr:nth-child(2) > ' \
+                                         'td:nth-child(2) > form:nth-child(2) > input:nth-child(3)'
+        self.css_selector_mouse_enter_area = 'body > table:nth-child(1) > tbody:nth-child(1) > tr:nth-child(1) > ' \
+                                             'td:nth-child(2) > table:nth-child(3) > tbody:nth-child(1) > ' \
+                                             'tr:nth-child(5) > td:nth-child(1) > span:nth-child(1)'
         self.css_selector_mouse_enter_area_status = '#onmouseenter'
         self.css_selector_mouse_move_area_count = '#onmousemove'
         self.elements = {}

@@ -1,6 +1,8 @@
 from selenium import webdriver
 from selenium.webdriver import ActionChains
 from selenium.webdriver.common.by import By
+from selenium.webdriver.support.wait import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
 
 
 class CaiptureComDemoSamples:
@@ -49,9 +51,20 @@ class CaiptureComDemoSamples:
                                              'tr:nth-child(5) > td:nth-child(1) > span:nth-child(1)'
         self.css_selector_mouse_enter_area_status = '#onmouseenter'
         self.css_selector_mouse_move_area_count = '#onmousemove'
-        self.css_selector_input_radio_male = "body > table:nth-child(1) > tbody:nth-child(1) > tr:nth-child(2) > td:nth-child(1) > form:nth-child(2) > input:nth-child(1)"
-        self.css_selector_input_radio_female = "body > table:nth-child(1) > tbody:nth-child(1) > tr:nth-child(2) > td:nth-child(1) > form:nth-child(2) > input:nth-child(3)"
-        self.css_selector_input_radio_genre_other = "body > table:nth-child(1) > tbody:nth-child(1) > tr:nth-child(2) > td:nth-child(1) > form:nth-child(2) > input:nth-child(5)"
+        self.css_selector_input_radio_male = "body > table:nth-child(1) > tbody:nth-child(1) > tr:nth-child(2) > " \
+                                             "td:nth-child(1) > form:nth-child(2) > input:nth-child(1)"
+        self.css_selector_input_radio_female = "body > table:nth-child(1) > tbody:nth-child(1) > tr:nth-child(2) > " \
+                                               "td:nth-child(1) > form:nth-child(2) > input:nth-child(3)"
+        self.css_selector_input_radio_genre_other = "body > table:nth-child(1) > tbody:nth-child(1) > " \
+                                                    "tr:nth-child(2) > td:nth-child(1) > form:nth-child(2) > " \
+                                                    "input:nth-child(5)"
+        self.css_selector_datetime_local = "body > table:nth-child(1) > tbody:nth-child(1) > tr:nth-child(3) > " \
+                                           "td:nth-child(1) > form:nth-child(2) > input:nth-child(1)"
+        self.css_selector_submit_radio_female = "body > table:nth-child(1) > tbody:nth-child(1) > tr:nth-child(3) > " \
+                                                "td:nth-child(1) > form:nth-child(2) > input:nth-child(3)"
+        self.css_selector_submit_datetime_local = 'body > table:nth-child(1) > tbody:nth-child(1) > ' \
+                                                  'tr:nth-child(3) > td:nth-child(1) > form:nth-child(2) > ' \
+                                                  'input:nth-child(3)'
         self.elements = {}
 
     def open_page(self):
@@ -136,4 +149,21 @@ class CaiptureComDemoSamples:
         element = self.driver.find_element(By.CSS_SELECTOR, self.css_selector_input_radio_female)
         element.click()
 
+    def set_datetime_local(self, datetime: str):
+        wait = WebDriverWait(self.driver, 5)
+        date = wait.until(EC.element_to_be_clickable((By.CSS_SELECTOR, self.css_selector_datetime_local)))
+        # self.driver.execute_script(f"arguments[0].setAttribute('value', {datetime})")
+        self.driver.execute_script(f"arguments[0].value = '{datetime}';", date)
 
+    def get_datetime_local(self) -> str:
+        """
+        todo get_datetime_local
+        :return:
+        """
+        element = self.driver.find_element(By.CSS_SELECTOR, self.css_selector_datetime_local)
+        res = element.get_attribute('value')
+        return res
+
+    def submit_datetime_local(self):
+        element = self.driver.find_element(By.CSS_SELECTOR, self.css_selector_submit_datetime_local)
+        element.click()

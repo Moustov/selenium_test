@@ -58,12 +58,22 @@ class TestCaiptureComDemoSamples(TestCase):
         new_value = self.page.get_mouse_move_count()
         assert init_value != new_value
 
-    def test_input_radion(self):
+    def test_input_radio(self):
         init_value = self.page.get_input_radio_genre()
         assert init_value == "MALE"
         self.page.set_female_input_radio()
         new_value = self.page.get_input_radio_genre()
         assert new_value == "FEMALE"
 
+    def test_datetime_local(self):
+        init_value = self.page.get_datetime_local()
+        assert init_value == ""
+        self.page.set_datetime_local('2023-04-19T10:24:00')
+        new_value = self.page.get_datetime_local()
+        assert new_value == '2023-04-19T10:24'
+        self.page.submit_datetime_local()
+        assert "2023-04-19T10%3A24" in self.driver.current_url
+
     def tearDown(self):
         self.driver.close()
+

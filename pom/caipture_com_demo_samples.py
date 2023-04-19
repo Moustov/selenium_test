@@ -65,6 +65,9 @@ class CaiptureComDemoSamples:
         self.css_selector_submit_datetime_local = 'body > table:nth-child(1) > tbody:nth-child(1) > ' \
                                                   'tr:nth-child(3) > td:nth-child(1) > form:nth-child(2) > ' \
                                                   'input:nth-child(3)'
+        self.css_selector_range = "body > table:nth-child(1) > tbody:nth-child(1) > tr:nth-child(5) > " \
+                                  "td:nth-child(2) > form:nth-child(2) > input:nth-child(1)"
+
         self.elements = {}
 
     def open_page(self):
@@ -167,3 +170,14 @@ class CaiptureComDemoSamples:
     def submit_datetime_local(self):
         element = self.driver.find_element(By.CSS_SELECTOR, self.css_selector_submit_datetime_local)
         element.click()
+
+    def get_range_value(self) -> int:
+        element = self.driver.find_element(By.CSS_SELECTOR, self.css_selector_range)
+        res = element.get_attribute('value')
+        return int(res)
+
+    def set_range_value(self, new_value: int):
+        element = self.driver.find_element(By.CSS_SELECTOR, self.css_selector_range)
+        move = ActionChains(self.driver)
+        move.click_and_hold(element).move_by_offset(new_value, 0).release().perform()
+

@@ -74,6 +74,17 @@ class TestCaiptureComDemoSamples(TestCase):
         self.page.submit_datetime_local()
         assert "2023-04-19T10%3A24" in self.driver.current_url
 
+    def test_range(self):
+        init_value = self.page.get_range_value()
+        assert init_value == 50
+        self.page.set_range_value(5)
+        new_value = self.page.get_range_value()
+        assert new_value == 54
+        self.page.set_range_value(-15)
+        new_value = self.page.get_range_value()
+        assert new_value == 39
+
+
     def tearDown(self):
         self.driver.close()
 

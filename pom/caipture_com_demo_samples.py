@@ -177,6 +177,7 @@ class CaiptureComDemoSamples:
         return int(res)
 
     def set_range_value(self, new_value: int):
+        # alternative : https://stackoverflow.com/questions/12122824/slider-movement-possible-in-selenium
         element = self.driver.find_element(By.CSS_SELECTOR, self.css_selector_range)
         move = ActionChains(self.driver)
         move.click_and_hold(element).move_by_offset(new_value, 0).release().perform()

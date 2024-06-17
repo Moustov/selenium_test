@@ -3,7 +3,7 @@ from selenium import webdriver
 from pom.codesandbox import CodeSandbox
 
 
-class TestCaiptureComDemoSamples(TestCase):
+class Testcodesandbox(TestCase):
     driver = None
 
     def setUp(self):
